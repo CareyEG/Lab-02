@@ -29,8 +29,28 @@ function displayPage(hornCreatures){
     $('.gallery').append($newHornCreature);
 
   });
+
+  makeDropDown(images);
+
 }
 
+function makeDropDown(images){
+  // create keyword to hold keywords
+  const keywords = [];
+
+  // i need to push all keywords into the keyword array
+
+  images.forEach((element) => {
+    //check if the array already has that word before pushing
+    if(keywords.includes(element.keyword)){
+      keywords.push(element.keyword);
+    }
+    
+  });
+
+  console.log('keywords arr', keywords);
+
+}
 
 
 $(startApp);
