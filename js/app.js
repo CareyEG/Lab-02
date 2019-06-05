@@ -21,8 +21,8 @@ function displayPage(hornCreatures){
     const $newHornCreature = $('.photo-template').clone();
 
     $newHornCreature.find('h2').text(hornCreature.title);
-    $newHornCreature.find('img').src(hornCreature.image_url);
-    $newHornCreature.find('img').alt(hornCreature.keyword);
+    $newHornCreature.find('img').attr('src', hornCreature.image_url);
+    $newHornCreature.find('img').attr('alt', hornCreature.keyword);
     $newHornCreature.find('p').text(hornCreature.description);
     $newHornCreature.removeClass('photo-template');
 
