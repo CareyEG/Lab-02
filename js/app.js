@@ -7,7 +7,7 @@ function startApp(){
 
 function loadData(){
   const success = hornCreatures => displayPage(hornCreatures);
-
+  
   const failure = error => console.error(error);
 
   $.get('data/page-1.json', 'json')
@@ -25,6 +25,7 @@ function displayPage(arr) {
     $newHornCreature.find('img').attr('alt', element.keyword);
     $newHornCreature.find('p').text(element.description);
     $newHornCreature.removeClass('photo-template');
+    $newHornCreature.attr('class', element.keyword);
 
     $('.gallery').append($newHornCreature);
   });
@@ -42,12 +43,18 @@ function makeDropDown(arr) {
       keywords.push(element.keyword)
     }
   });
-  console.log(keywords);
 
   keywords.forEach(element => {
     const markup = `<option value="${element}">${element}</option>`;
     $('select').append(markup);
   });
+  $('select').on('change', dropDownChanged);
+}
+
+function dropDownChanged(event) {
+  const value = $(event.target).val();
+  $('main div').hide();
+  $(`.${value}`).show();
 }
 
 $(startApp);

@@ -1,0 +1,12 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+img {
+  height: 300px;
+  width: 300px;
+}
+
+div {
+  float: left;
+}
