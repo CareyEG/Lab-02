@@ -28,37 +28,12 @@ function displayPage(arr) {
 
     $('.gallery').append($newHornCreature);
   });
-<<<<<<< HEAD
   makeDropDown(arr);
 }
 
 function makeDropDown(arr) {
   // create array to hold keywords
   const keywords = [];
-=======
-
-  makeDropDown(images);
-
-}
-
-function makeDropDown(images){
-  // create keyword to hold keywords
-  const keywords = [];
-
-  // i need to push all keywords into the keyword array
-
-  images.forEach((element) => {
-    //check if the array already has that word before pushing
-    if(keywords.includes(element.keyword)){
-      keywords.push(element.keyword);
-    }
-    
-  });
-
-  console.log('keywords arr', keywords);
-
-}
->>>>>>> 72a0eb223331c55e14ec258b3e45d8a7571a61dc
 
   arr.forEach (element => {
     // check if the array already has that word before pushing
@@ -66,6 +41,12 @@ function makeDropDown(images){
     if(!keywords.includes(element.keyword)){
       keywords.push(element.keyword)
     }
+  });
+  console.log(keywords);
+
+  keywords.forEach(element => {
+    const markup = `<option value="${element}">${element}</option>`;
+    $('select').append(markup);
   });
 }
 
