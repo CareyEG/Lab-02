@@ -15,22 +15,33 @@ function loadData(){
     .catch(failure);
 }
 
-function displayPage(hornCreatures){
+function displayPage(arr) {
 
-  hornCreatures.forEach(hornCreature => {
+  arr.forEach(element => {
     const $newHornCreature = $('.photo-template').clone();
 
-    $newHornCreature.find('h2').text(hornCreature.title);
-    $newHornCreature.find('img').attr('src', hornCreature.image_url);
-    $newHornCreature.find('img').attr('alt', hornCreature.keyword);
-    $newHornCreature.find('p').text(hornCreature.description);
+    $newHornCreature.find('h2').text(element.title);
+    $newHornCreature.find('img').attr('src', element.image_url);
+    $newHornCreature.find('img').attr('alt', element.keyword);
+    $newHornCreature.find('p').text(element.description);
     $newHornCreature.removeClass('photo-template');
 
     $('.gallery').append($newHornCreature);
-
   });
+  makeDropDown(arr);
 }
 
+function makeDropDown(arr) {
+  // create array to hold keywords
+  const keywords = [];
 
+  arr.forEach (element => {
+    // check if the array already has that word before pushing
+    // if the word is not in the array
+    if(!keywords.includes(element.keyword)){
+      keywords.push(element.keyword)
+    }
+  });
+}
 
 $(startApp);
